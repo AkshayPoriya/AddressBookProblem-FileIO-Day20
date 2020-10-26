@@ -219,6 +219,9 @@ namespace AddressBookSystem
             }
         }
 
+        /// <summary>
+        /// Searches the name of the contact with city.
+        /// </summary>
         private static void SearchContactWithCityName()
         {
             Console.WriteLine("\nEnter full name of the person!");
@@ -245,6 +248,9 @@ namespace AddressBookSystem
             Console.WriteLine($"No Contact Exist With This Name!");
         }
 
+        /// <summary>
+        /// Searches the name of the contact with state.
+        /// </summary>
         private static void SearchContactWithStateName()
         {
             Console.WriteLine("\nEnter full name of the person!");
@@ -271,6 +277,9 @@ namespace AddressBookSystem
             Console.WriteLine($"No Contact Exist With This Name!");
         }
 
+        /// <summary>
+        /// Views the name of the contact by city.
+        /// </summary>
         public static void ViewContactByCityName()
         {
             Console.WriteLine("\nEnter name of the city!");
@@ -290,6 +299,9 @@ namespace AddressBookSystem
             }
         }
 
+        /// <summary>
+        /// Views the name of the contact by state.
+        /// </summary>
         public static void ViewContactByStateName()
         {
             Console.WriteLine("\nEnter name of the State!");
@@ -309,6 +321,9 @@ namespace AddressBookSystem
             }
         }
 
+        /// <summary>
+        /// Numbers the name of the of contacts by city.
+        /// </summary>
         public static void NumberOfContactsByCityName()
         {
             Console.WriteLine("\nEnter name of the city!");
@@ -321,6 +336,9 @@ namespace AddressBookSystem
             Console.WriteLine("No of Contacts: " + cityToContactMapperGlobal[cityName].Count);
         }
 
+        /// <summary>
+        /// Numbers the name of the of contacts by state.
+        /// </summary>
         public static void NumberOfContactsByStateName()
         {
             Console.WriteLine("\nEnter name of the state!");
