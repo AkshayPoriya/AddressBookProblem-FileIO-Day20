@@ -250,12 +250,30 @@ namespace AddressBookSystem
         }
 
         /// <summary>
-        /// Views the name of the entries sorted by person name.
+        /// Views the entries in sorted order by given property in option string
         /// </summary>
-        public void ViewEntriesSortedByPersonName()
+        /// <param name="option">The option.</param>
+        public void ViewEntriesInSortedOrder(string option)
         {
-            List<Contact> sortedByPersonName = this.contactList.OrderBy(obj => (obj.firstName + obj.lastName)).ToList();
-            foreach(Contact contact in sortedByPersonName)
+            List<Contact> sortedContactList = this.contactList;
+            if (option == "name")
+            {
+                sortedContactList = this.contactList.OrderBy(obj => (obj.firstName + obj.lastName)).ToList();
+            }
+            if (option == "city")
+            {
+                sortedContactList = this.contactList.OrderBy(obj => (obj.city)).ToList();
+            }
+            if (option == "state")
+            {
+                sortedContactList = this.contactList.OrderBy(obj => (obj.state)).ToList();
+            }
+            if (option == "zip")
+            {
+                sortedContactList = this.contactList.OrderBy(obj => (obj.zip)).ToList();
+            }
+
+            foreach (Contact contact in sortedContactList)
             {
                 Console.WriteLine("-----------");
                 Console.WriteLine("FirstName: " + contact.firstName + "\tLastName: " + contact.lastName);
