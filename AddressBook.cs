@@ -8,6 +8,7 @@ namespace AddressBookSystem
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
 
     /// <summary>
@@ -245,6 +246,22 @@ namespace AddressBookSystem
                 {
                     flag = false;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Views the name of the entries sorted by person name.
+        /// </summary>
+        public void ViewEntriesSortedByPersonName()
+        {
+            List<Contact> sortedByPersonName = this.contactList.OrderBy(obj => (obj.firstName + obj.lastName)).ToList();
+            foreach(Contact contact in sortedByPersonName)
+            {
+                Console.WriteLine("-----------");
+                Console.WriteLine("FirstName: " + contact.firstName + "\tLastName: " + contact.lastName);
+                Console.WriteLine("Address: " + contact.address + "\tCity: " + contact.city + "\tState: " + contact.state);
+                Console.WriteLine("Zip: " + contact.zip + "\tPhoneNumber: " + contact.phoneNumber + "\tEmail: " + contact.email);
+                Console.WriteLine("-----------");
             }
         }
     }

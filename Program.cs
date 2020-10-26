@@ -53,7 +53,8 @@ namespace AddressBookSystem
                     "\nEnter 4 to Delete Contacts\nEnter 5 to search contact using city name" +
                     "\nEnter 6 to search contact using state name\nEnter 7 to view contact details by city name" +
                     "\nEnter 8 to view contact details by state name\nEnter 9 to get number of contacts by city" +
-                    "\nEnter 10 to get number of contacts by state\nEnter any other key to exit");
+                    "\nEnter 10 to get number of contacts by state\nEnter 11 to view AddressBooks sorted by person name" +
+                    "\nEnter any other key to exit");
                 string options = Console.ReadLine();
                 switch (options)
                 {
@@ -86,6 +87,14 @@ namespace AddressBookSystem
                         break;
                     case "10":
                         NumberOfContactsByStateName();
+                        break;
+                    case "11":
+                        foreach(KeyValuePair<string,AddressBook> pair in addressBookMapper)
+                        {
+                            Console.WriteLine("************************************************");
+                            Console.WriteLine("Details of AddressBook with Name: " + pair.Key);
+                            pair.Value.ViewEntriesSortedByPersonName();
+                        }
                         break;
                     default:
                         flag = false;
