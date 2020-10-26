@@ -53,7 +53,7 @@ namespace AddressBookSystem
                     "\nEnter 4 to Delete Contacts\nEnter 5 to search contact using city name" +
                     "\nEnter 6 to search contact using state name\nEnter 7 to view contact details by city name" +
                     "\nEnter 8 to view contact details by state name\nEnter 9 to get number of contacts by city" +
-                    "\nEnter 10 to get number of contacts by state\nEnter 11 to view AddressBooks sorted by person name" +
+                    "\nEnter 10 to get number of contacts by state\nEnter 11 to view AddressBooks in sorted order" +
                     "\nEnter any other key to exit");
                 string options = Console.ReadLine();
                 switch (options)
@@ -89,17 +89,46 @@ namespace AddressBookSystem
                         NumberOfContactsByStateName();
                         break;
                     case "11":
-                        foreach(KeyValuePair<string,AddressBook> pair in addressBookMapper)
-                        {
-                            Console.WriteLine("************************************************");
-                            Console.WriteLine("Details of AddressBook with Name: " + pair.Key);
-                            pair.Value.ViewEntriesSortedByPersonName();
-                        }
+                        ViewInSortedOrder();
                         break;
                     default:
                         flag = false;
                         break;
                 }
+            }
+        }
+
+        /// <summary>
+        /// View Contacts in sorted order.
+        /// </summary>
+        public static void ViewInSortedOrder()
+        {
+            Console.WriteLine("Enter a for Sort by person name\nEnter b for sort by city name" +
+                "\nEnter c for sort by state name\nEnter d for sort by zip code\nPress any other key to exit");
+            string options = Console.ReadLine();
+            string orderBy = "name";
+            switch (options)
+            {
+                case "a":
+                    orderBy = "name";
+                    break;
+                case "b":
+                    orderBy = "city";
+                    break;
+                case "c":
+                    orderBy = "state";
+                    break;
+                case "d":
+                    orderBy = "zip";
+                    break;
+                default:
+                    return;
+            }
+            foreach (KeyValuePair<string, AddressBook> pair in addressBookMapper)
+            {
+                Console.WriteLine("************************************************");
+                Console.WriteLine("Details of AddressBook with Name: " + pair.Key);
+                pair.Value.ViewEntriesInSortedOrder(orderBy);
             }
         }
 
