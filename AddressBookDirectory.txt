@@ -1,0 +1,59 @@
+
+
+******************* New Data Added *******************
+
+
+******************* AddressBook: Jind *******************
+
+Number of contacts: 2
+----------------Contact Details----------------
+1.
+First Name:	Akshay
+Last Name:	Poriya
+Address:	jind
+City:	jind
+State:	Haryana
+ZIP:	
+Phone Number:	
+Email:	
+
+2.
+First Name:	Gaurav
+Last Name:	Vashisht
+Address:	jind
+City:	jind
+State:	Haryana
+ZIP:	
+Phone Number:	
+Email:	
+
+
+******************* AddressBook: Hissar *******************
+
+Number of contacts: 1
+----------------Contact Details----------------
+1.
+First Name:	Vishal
+Last Name:	Garg
+Address:	Hissar
+City:	hissar
+State:	Haryana
+ZIP:	
+Phone Number:	
+Email:	
+
+
+******************* AddressBook: Sonipat *******************
+
+Number of contacts: 1
+----------------Contact Details----------------
+1.
+First Name:	Himanshu
+Last Name:	Rohilla
+Address:	Sonipat
+City:	Sonipat
+State:	Haryana
+ZIP:	
+Phone Number:	
+Email:	
+

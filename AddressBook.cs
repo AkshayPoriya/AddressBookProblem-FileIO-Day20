@@ -19,7 +19,7 @@ namespace AddressBookSystem
         /// <summary>
         /// contactList stores all contacts of one AddressBook
         /// </summary>
-        private readonly List<Contact> contactList = new List<Contact>();
+        public readonly List<Contact> contactList = new List<Contact>();
 
         /// <summary>
         /// nameToContactMapper is used to access contact details using name of person
@@ -35,7 +35,7 @@ namespace AddressBookSystem
             string _firstName, _lastName, _address, _city, _state, _zip, _phoneNumber, _email;
             while (flag)
             {
-                Console.WriteLine("Enter First Name of Contact");
+                Console.WriteLine("\nEnter First Name of Contact");
                 _firstName = Console.ReadLine();
                 Console.WriteLine("Enter Last Name of Contact");
                 _lastName = Console.ReadLine();
@@ -69,26 +69,26 @@ namespace AddressBookSystem
                 contact.email = _email;
 
                 this.contactList.Add(contact);
-                if (Program.cityToContactMapperGlobal.ContainsKey(contact.city))
+                if (AddressBookDirectory.cityToContactMapperGlobal.ContainsKey(contact.city))
                 {
-                    Program.cityToContactMapperGlobal[contact.city].Add(contact);
+                    AddressBookDirectory.cityToContactMapperGlobal[contact.city].Add(contact);
                 }
                 else
                 {
                     List<Contact> list = new List<Contact>();
                     list.Add(contact);
-                    Program.cityToContactMapperGlobal.Add(contact.city, list);
+                    AddressBookDirectory.cityToContactMapperGlobal.Add(contact.city, list);
                 }
 
-                if (Program.stateToContactMapperGlobal.ContainsKey(contact.state))
+                if (AddressBookDirectory.stateToContactMapperGlobal.ContainsKey(contact.state))
                 {
-                    Program.stateToContactMapperGlobal[contact.state].Add(contact);
+                    AddressBookDirectory.stateToContactMapperGlobal[contact.state].Add(contact);
                 }
                 else
                 {
                     List<Contact> list = new List<Contact>();
                     list.Add(contact);
-                    Program.stateToContactMapperGlobal.Add(contact.state, list);
+                    AddressBookDirectory.stateToContactMapperGlobal.Add(contact.state, list);
                 }
 
                 this.nameToContactMapper.Add(contact.firstName + " " + contact.lastName, contact);
@@ -146,8 +146,8 @@ namespace AddressBookSystem
                     Contact contact = this.nameToContactMapper[name];
                     string oldCityName = contact.city;
                     string oldStateName = contact.state;
-                    Program.cityToContactMapperGlobal[oldCityName].Remove(contact);
-                    Program.stateToContactMapperGlobal[oldStateName].Remove(contact);
+                    AddressBookDirectory.cityToContactMapperGlobal[oldCityName].Remove(contact);
+                    AddressBookDirectory.stateToContactMapperGlobal[oldStateName].Remove(contact);
                     contact.firstName = _firstName;
                     contact.lastName = _lastName;
                     contact.address = _address;
@@ -157,26 +157,26 @@ namespace AddressBookSystem
                     contact.phoneNumber = _phoneNumber;
                     contact.email = _email;
 
-                    if (Program.cityToContactMapperGlobal.ContainsKey(contact.city))
+                    if (AddressBookDirectory.cityToContactMapperGlobal.ContainsKey(contact.city))
                     {
-                        Program.cityToContactMapperGlobal[contact.city].Add(contact);
+                        AddressBookDirectory.cityToContactMapperGlobal[contact.city].Add(contact);
                     }
                     else
                     {
                         List<Contact> list = new List<Contact>();
                         list.Add(contact);
-                        Program.cityToContactMapperGlobal.Add(contact.city, list);
+                        AddressBookDirectory.cityToContactMapperGlobal.Add(contact.city, list);
                     }
 
-                    if (Program.stateToContactMapperGlobal.ContainsKey(contact.state))
+                    if (AddressBookDirectory.stateToContactMapperGlobal.ContainsKey(contact.state))
                     {
-                        Program.stateToContactMapperGlobal[contact.state].Add(contact);
+                        AddressBookDirectory.stateToContactMapperGlobal[contact.state].Add(contact);
                     }
                     else
                     {
                         List<Contact> list = new List<Contact>();
                         list.Add(contact);
-                        Program.stateToContactMapperGlobal.Add(contact.state, list);
+                        AddressBookDirectory.stateToContactMapperGlobal.Add(contact.state, list);
                     }
 
                     Console.WriteLine("\nDetails modified successfully with following entries: ");
@@ -219,8 +219,8 @@ namespace AddressBookSystem
                     Contact contact = this.nameToContactMapper[name];
                     string oldCityName = contact.city;
                     string oldStateName = contact.state;
-                    Program.cityToContactMapperGlobal[oldCityName].Remove(contact);
-                    Program.stateToContactMapperGlobal[oldStateName].Remove(contact);
+                    AddressBookDirectory.cityToContactMapperGlobal[oldCityName].Remove(contact);
+                    AddressBookDirectory.stateToContactMapperGlobal[oldStateName].Remove(contact);
                     var index = this.contactList.FindIndex(i => i == contact); // like Where/Single
                     if (index >= 0)
                     {   // ensure item found
@@ -273,13 +273,19 @@ namespace AddressBookSystem
                 sortedContactList = this.contactList.OrderBy(obj => (obj.zip)).ToList();
             }
 
+            int contactCount = 1;
             foreach (Contact contact in sortedContactList)
             {
-                Console.WriteLine("-----------");
-                Console.WriteLine("FirstName: " + contact.firstName + "\tLastName: " + contact.lastName);
-                Console.WriteLine("Address: " + contact.address + "\tCity: " + contact.city + "\tState: " + contact.state);
-                Console.WriteLine("Zip: " + contact.zip + "\tPhoneNumber: " + contact.phoneNumber + "\tEmail: " + contact.email);
-                Console.WriteLine("-----------");
+                Console.WriteLine("\n" + contactCount + ".");
+                Console.WriteLine("First Name:\t" + contact.firstName);
+                Console.WriteLine("Last Name:\t" + contact.lastName);
+                Console.WriteLine("Address:\t" + contact.address);
+                Console.WriteLine("City:\t" + contact.city);
+                Console.WriteLine("State:\t" + contact.state);
+                Console.WriteLine("ZIP:\t" + contact.zip);
+                Console.WriteLine("Phone Number:\t" + contact.phoneNumber);
+                Console.WriteLine("Email:\t" + contact.email + "\n");
+                contactCount++;
             }
         }
     }
